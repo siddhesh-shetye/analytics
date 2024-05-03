@@ -5,15 +5,29 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
-import pluginId from '../../pluginId';
+
+import {
+  EmptyStateLayout,
+  BaseHeaderLayout,
+  ContentLayout,
+} from '@strapi/design-system';
+import Illo from '../../components/illo';
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>{pluginId}&apos;s HomePage</h1>
-      <p>Happy coding</p>
-    </div>
+    <>
+      <BaseHeaderLayout
+        title="Analytics"
+        subtitle="This module is designed to track analytics within your application, allowing you to gain valuable insights into user interactions. It captures various key parameters for each event, ensuring detailed analysis"
+        as="h2"
+      />
+      <ContentLayout>
+        <EmptyStateLayout
+          icon={<Illo />}
+          content="Coming Soon"
+        />
+      </ContentLayout>
+    </>
   );
 };
 

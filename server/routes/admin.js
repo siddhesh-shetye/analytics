@@ -3,7 +3,7 @@ module.exports = {
     routes: [
         {
             method: 'GET',
-            path: '/',
+            path: '/admin',
             handler: 'controller.index',
             config: {
                 policies: [],

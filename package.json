@@ -1,12 +1,17 @@
 {
-  "name": "analytics",
-  "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "name": "@siddhesh_shetye/analytics",
+  "version": "1.0.7",
+  "description": "This module is designed to track analytics within your application, allowing you to gain valuable insights into user interactions. It captures various key parameters for each event, ensuring detailed analysis",
   "strapi": {
     "name": "analytics",
-    "description": "Description of Analytics plugin",
+    "description": "This module is designed to track analytics within your application, allowing you to gain valuable insights into user interactions. It captures various key parameters for each event, ensuring detailed analysis",
     "kind": "plugin",
     "displayName": "Analytics"
+  },
+  "author": "Siddhesh Shetye (https://github.com/siddhesh-shetye/analytics)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddhesh-shetye/analytics.git"
   },
   "dependencies": {
     "@strapi/design-system": "^1.6.3",
@@ -26,17 +31,20 @@
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.2.1"
   },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "maintainers": [
-    {
-      "name": "A Strapi developer"
-    }
-  ],
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "main": "strapi-admin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/siddhesh-shetye/analytics/issues"
+  },
+  "homepage": "https://github.com/siddhesh-shetye/analytics#readme",
+  "keywords": [
+    "analytics"
+  ]
 }

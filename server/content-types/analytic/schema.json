@@ -13,8 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "event_type": {
-      "type": "string",
-      "required": true
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "clicked",
+        "viewed"
+      ]
     },
     "event_name": {
       "type": "string",
@@ -29,7 +33,7 @@
     "field": {
       "type": "string"
     },
-    "user_id": {
+    "user_token": {
       "type": "string"
     }
   }
