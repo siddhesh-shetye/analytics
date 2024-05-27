@@ -23,7 +23,7 @@ Added to Cart: Records when a user adds an item to their shopping cart or basket
 
 
 ## env:
-ATTEMPTS_ENABLED=true	//To enable/disabled attempts per hours check.
+ATTEMPTS_ENABLED=true	//To enable or disabled attempts per hours check.
 ATTEMPTS=5		//This value determines the threshold for blocking user attempts after the specified number of tries.
 ATTEMPTS_HOURS=1	//This value determines the timeframe for blocking user attempts after reaching the specified number of tries within the indicated hours.
 

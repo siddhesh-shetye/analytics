@@ -1,6 +1,6 @@
 {
   "name": "@siddhesh_shetye/analytics",
-  "version": "1.0.7",
+  "version": "1.0.12",
   "description": "This module is designed to track analytics within your application, allowing you to gain valuable insights into user interactions. It captures various key parameters for each event, ensuring detailed analysis",
   "strapi": {
     "name": "analytics",
