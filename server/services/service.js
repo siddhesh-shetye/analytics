@@ -4,7 +4,7 @@ const modelName = "plugin::analytics.analytic";
 let dateFNS = require('date-fns');
 
 module.exports = ({ strapi }) => ({
-  async getAnalyticsData() {
+  async getData() {
     const analytics = await strapi.entityService.findMany(modelName);
     return { data : analytics };
   },
@@ -63,5 +63,92 @@ module.exports = ({ strapi }) => ({
     }
 
     return ctx.badRequest('Failed to create analytics entry');
-  }
+  },
+
+  async getAnalyticsData() {
+    const analytics = await strapi.entityService.findMany(modelName);
+
+    const groupedData = {};
+
+    analytics.forEach(item => {
+      const entityId = item.collection_id + '-' + item.collection_name;
+      const field = item.field;
+  
+      if (!groupedData[entityId]) {
+        groupedData[entityId] = {
+          entity_id: item.collection_id,
+          entity_name: item.collection_name,
+          data: []
+        };
+      }
+  
+      // Find the index of the field in the data array
+      const index = groupedData[entityId].data.findIndex(obj => obj.field === field);
+      if (index === -1) {
+        // If the field does not exist, add it to the data array
+        groupedData[entityId].data.push({ field, count: 1 });
+      } else {
+        // If the field already exists, increment its count
+        groupedData[entityId].data[index].count++;
+      }
+    });
+  
+    return { data : Object.values(groupedData) };
+  },
+
+  async getOverview() {
+    const analytics = await strapi.entityService.findMany(modelName);
+
+    const groupedData = {};
+
+    analytics.forEach(item => {
+      const entityId = item.collection_name;
+  
+      if (!groupedData[entityId]) {
+        groupedData[entityId] = {
+          entity_name: item.collection_name,
+          counter: 1
+        };
+      } else {
+        groupedData[entityId].counter++;
+      }
+    });
+  
+    return { data : Object.values(groupedData) };
+  },
+  
+  async getIdentifierOverview() {
+    const analytics = await strapi.entityService.findMany(modelName);
+
+    const groupedData = {};
+
+    analytics.forEach(item => {
+      const identifier = item.identifier;
+      if (!identifier) {
+        return;
+      }
+
+      let field = item.field;
+      field = field || 'page_views';
+
+      if (!groupedData[identifier]) {
+        groupedData[identifier] = {
+          record_identifier: identifier,
+          data: []
+        };
+      }
+
+      // Find the index of the field in the data array
+      const index = groupedData[identifier].data.findIndex(obj => obj.identifier === field);
+      if (index === -1) {
+        // If the field does not exist, add it to the data array
+        groupedData[identifier].data.push({ identifier: field, count: 1 });
+      } else {
+        // If the field already exists, increment its count
+        groupedData[identifier].data[index].count++;
+      }
+    });
+  
+    return { data : Object.values(groupedData) };
+  },
 });
