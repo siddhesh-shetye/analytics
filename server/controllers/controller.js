@@ -2,12 +2,20 @@
 
 module.exports = ({ strapi }) => ({
   async index(ctx) {
-    return await strapi.plugin('analytics').service('service').getAnalyticsData();
+    return await strapi.plugin('analytics').service('service').getData();
   },
 
-  async getAnalyticsData(ctx) {
+  async getData(ctx) {
     try {
-      return await strapi.plugin('analytics').service('service').getAnalyticsData();
+      return await strapi.plugin('analytics').service('service').getData();
+    } catch (err) {
+      ctx.throw(500, err);
+    }
+  },
+
+  async getOverview(ctx) {
+    try {
+      return await strapi.plugin('analytics').service('service').getOverview();
     } catch (err) {
       ctx.throw(500, err);
     }
@@ -21,6 +29,19 @@ module.exports = ({ strapi }) => ({
     }
   },
 
+  async getIdentifierOverview(ctx) {
+    try {
+      return await strapi.plugin('analytics').service('service').getIdentifierOverview();
+    } catch (err) {
+      ctx.throw(500, err);
+    }
+  },
+  
+  /*
+  * @param key
+  * @param data object with required key and extra params
+  * @return Object
+  */
   async generateAnalyticsObject(key, data) {
     // Validate if all required fields are present in the data object
     const requiredFields = ['event_type', 'event_name', 'collection_name', 'collection_id'];
@@ -38,4 +59,13 @@ module.exports = ({ strapi }) => ({
       }
     };
   },
+
+  async getAnalyticsData(ctx) {
+    try {
+      return await strapi.plugin('analytics').service('service').getAnalyticsData(ctx);
+    } catch (err) {
+      ctx.throw(500, err);
+    }
+  },
 });
+
