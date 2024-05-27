@@ -6,7 +6,7 @@ module.exports = {
         {
             method: 'GET',
             path: '/',
-            handler: 'controller.getAnalyticsData',
+            handler: 'controller.getData',
             config: {
               policies: [],
             },
@@ -19,5 +19,30 @@ module.exports = {
               policies: [],
             },
         },
+        {
+            method: 'GET',
+            path: '/data',
+            handler: 'controller.getAnalyticsData',
+            config: {
+              policies: [],
+            },
+        },
+        {
+            method: 'GET',
+            path: '/overview',
+            handler: 'controller.getOverview',
+            config: {
+              policies: [],
+            },
+        },
+        {
+            method: 'GET',
+            path: '/overview-identifier',
+            handler: 'controller.getIdentifierOverview',
+            config: {
+              policies: [],
+            },
+        },
     ],
 };
+
