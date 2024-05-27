@@ -25,9 +25,14 @@
       "required": true
     },
     "collection_name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "collection_id": {
+      "type": "string",
+      "required": true
+    },
+    "identifier": {
       "type": "string"
     },
     "field": {
