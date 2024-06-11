@@ -43,6 +43,14 @@ module.exports = {
               policies: [],
             },
         },
+        {
+            method: 'GET',
+            path: '/list',
+            handler: 'controller.getList',
+            config: {
+              policies: [],
+            },
+        },
     ],
 };
 

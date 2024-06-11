@@ -36,6 +36,14 @@ module.exports = ({ strapi }) => ({
       ctx.throw(500, err);
     }
   },
+
+  async getList(ctx) {
+    try {
+      return await strapi.plugin('analytics').service('service').getList(ctx);
+    } catch (err) {
+      ctx.throw(500, err);
+    }
+  },
   
   /*
   * @param key

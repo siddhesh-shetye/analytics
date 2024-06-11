@@ -151,4 +151,8 @@ module.exports = ({ strapi }) => ({
   
     return { data : Object.values(groupedData) };
   },
+  
+  async getList(ctx) {
+    return await strapi.entityService.findMany(modelName, ctx.request.query);
+  },
 });
