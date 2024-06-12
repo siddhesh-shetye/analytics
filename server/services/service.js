@@ -56,10 +56,10 @@ module.exports = ({ strapi }) => ({
     const analytics = await strapi.entityService.create(modelName, { data });
 
     if(analytics?.id) {
-      return ctx.send({
+      return {
         message: 'Analytics entry created successfully',
         status: 201
-      });
+      };
     }
 
     return ctx.badRequest('Failed to create analytics entry');
