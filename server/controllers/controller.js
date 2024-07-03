@@ -52,7 +52,7 @@ module.exports = ({ strapi }) => ({
   */
   async generateAnalyticsObject(key, data) {
     // Validate if all required fields are present in the data object
-    const requiredFields = ['event_type', 'event_name', 'collection_name', 'collection_id'];
+    const requiredFields = ['event_type', 'collection_name', 'collection_id'];
 
     for (const field of requiredFields) {
       if (!data.hasOwnProperty(field)) {
