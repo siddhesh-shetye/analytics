@@ -31,7 +31,7 @@ module.exports = ({ strapi }) => ({
   },
 
   async create(ctx) {
-    const { event_type, event_name, collection_name, collection_id, field } = ctx.request.body;
+    const { event_type, collection_name, collection_id, field } = ctx.request.body;
     const { user } = ctx.state;
 
 
@@ -45,7 +45,6 @@ module.exports = ({ strapi }) => ({
 
     const data = {
       event_type,
-      event_name,
       collection_name,
       collection_id,
       field,
