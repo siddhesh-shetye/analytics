@@ -20,10 +20,6 @@
         "viewed"
       ]
     },
-    "event_name": {
-      "type": "string",
-      "required": true
-    },
     "collection_name": {
       "type": "string",
       "required": true
