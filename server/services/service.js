@@ -31,7 +31,7 @@ module.exports = ({ strapi }) => ({
   },
 
   async create(ctx) {
-    const { event_type, collection_name, collection_id, field } = ctx.request.body;
+    const { event_type, collection_name, collection_id, field, identifier } = ctx.request.body;
     const { user } = ctx.state;
 
 
@@ -48,6 +48,7 @@ module.exports = ({ strapi }) => ({
       collection_name,
       collection_id,
       field,
+      identifier,
       user_token: user.id ? user.id.toString() : (user.guest_id || ''),
       publishedAt: new Date()
     };
