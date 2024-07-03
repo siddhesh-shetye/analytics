@@ -31,7 +31,7 @@ module.exports = ({ strapi }) => ({
 
   async getIdentifierOverview(ctx) {
     try {
-      return await strapi.plugin('analytics').service('service').getIdentifierOverview();
+      return await strapi.plugin('analytics').service('service').getIdentifierOverview(ctx);
     } catch (err) {
       ctx.throw(500, err);
     }
