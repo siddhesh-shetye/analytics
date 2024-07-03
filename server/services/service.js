@@ -117,8 +117,10 @@ module.exports = ({ strapi }) => ({
     return { data : Object.values(groupedData) };
   },
   
-  async getIdentifierOverview() {
-    const analytics = await strapi.entityService.findMany(modelName);
+  async getIdentifierOverview(ctx) {
+    const analytics = await strapi.entityService.findMany(modelName, {
+      ...ctx.request.query
+    });
 
     const groupedData = {};
 
@@ -129,7 +131,9 @@ module.exports = ({ strapi }) => ({
       }
 
       let field = item.field;
-      field = field || 'page_views';
+      if(!field && item.event_type === "viewed") {
+        field = 'page_views';
+      }
 
       if (!groupedData[identifier]) {
         groupedData[identifier] = {
